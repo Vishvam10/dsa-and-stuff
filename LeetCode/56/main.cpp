@@ -1,23 +1,22 @@
-bool cmp(const vector<int> &lhs, const vector<int> &rhs) {
-  if (lhs[0] < rhs[0]) {
-    return true;
-  }
-  return false;
-}
-
 class Solution {
 public:
   vector<vector<int>> merge(vector<vector<int>> &arr) {
     int n = arr.size();
     vector<vector<int>> ans;
-    sort(arr.begin(), arr.end(), cmp);
 
-    for (int i = 0; i < n; i++) {
-      int s = ans.size();
-      if (s == 0 || ans[s - 1][1] < arr[i][0]) {
-        ans.emplace_back(arr[i]);
+    sort(arr.begin(), arr.end());
+    ans.emplace_back(arr[0]);
+
+    for (int i = 1; i < n; ++i) {
+      vector<int> prev = ans[ans.size() - 1];
+      vector<int> cur = arr[i];
+
+      if (cur[0] >= prev[0] && cur[0] <= prev[1]) {
+        int low = min(prev[0], cur[0]);
+        int high = max(prev[1], cur[1]);
+        ans[ans.size() - 1] = {low, high};
       } else {
-        ans[s - 1][1] = max(ans[s - 1][1], arr[i][1]);
+        ans.emplace_back(arr[i]);
       }
     }
 
