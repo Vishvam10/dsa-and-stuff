@@ -1,18 +1,18 @@
 class Solution {
 public:
-  int findKthLargest(vector<int> &arr, int k) {
-    map<int, int> mp;
+    int findKthLargest(vector<int>& arr, int k) {
+        priority_queue<int> pq;
 
-    for (int &x : arr) {
-      mp[x]++;
-    }
+        for(const auto x : arr) {
+            pq.push(x);
+        }
 
-    for (auto it = mp.rbegin(); it != mp.rend(); ++it) {
-      k -= it->second;
-      if (k <= 0) {
-        return it->first;
-      }
+        while(k > 1) {
+            pq.pop();
+            k--;
+        }
+
+        return pq.top();
+        
     }
-    return -1;
-  }
 };

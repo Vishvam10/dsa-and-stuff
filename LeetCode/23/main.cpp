@@ -10,45 +10,34 @@
  */
 class Solution {
 public:
-  struct Node {
-    ListNode *lnode;
-    int val;
 
-    Node(ListNode *_lnode, int _val) : lnode(_lnode), val(_val) {}
+    ListNode* mergeKLists(vector<ListNode*>& lists) {
+        int n = lists.size();
+        
+        auto cmp = [](ListNode* a, ListNode* b) {
+            return a->val > b->val;
+        };
 
-    bool operator<(const Node &node) const { return val > node.val; }
-  };
+        priority_queue<ListNode*, vector<ListNode*>, decltype(cmp)> pq(cmp);
+          
+        ListNode *head = new ListNode();
+        ListNode *dummy = head;
 
-  ListNode *mergeKLists(vector<ListNode *> &lists) {
+        for(int i = 0; i < n; ++i) {
+            ListNode* temp = lists[i];
+            while(temp != nullptr) {
+                pq.push(temp);
+                temp = temp->next;
+            }
+        }
 
-    priority_queue<Node> h;
+        while(!pq.empty()) {
+            dummy->next = pq.top();
+            pq.pop();
+            dummy = dummy->next;
+            dummy->next = nullptr; 
+        }
 
-    ListNode *head = new ListNode(-1);
-    ListNode *ans = head;
-
-    for (int i = 0; i < lists.size(); i++) {
-      if (lists[i] != nullptr) {
-        h.push(Node(lists[i], lists[i]->val));
-      }
-    };
-
-    while (!h.empty()) {
-
-      // the element with the least val
-      Node ele = h.top();
-      h.pop();
-
-      ListNode *ptr = ele.lnode;
-      int val = ele.val;
-
-      head->next = ptr;
-      head = head->next;
-
-      if (ptr->next != nullptr) {
-        h.push(Node(ptr->next, ptr->next->val));
-      }
+        return head->next;
     }
-
-    return ans->next;
-  }
 };
