@@ -1,5 +1,6 @@
 from functools import cmp_to_key
 
+
 class Solution:
     def largestNumber(self, arr: List[int]) -> str:
         def compare(a: str, b: str) -> int:
