@@ -1,18 +1,9 @@
-"""
-DIFFICULTY : easy
-TAGS : math
-"""
-
-
 class Solution:
     def reverse(self, x: int) -> int:
-        rev = 0
-        if x < 0:
-            flag = -1
-            x = -x
-        else:
-            flag = 1
-        while x:
-            rev = rev * 10 + x % 10
-            x //= 10
-        return 0 if rev > pow(2, 31) else rev * flag
+        ans = str(x)[::-1]
+        if(ans[-1] == "-") :
+            ans = "-" + ans[:-1]
+        ans = int(ans)
+        if(ans < -2 ** 31 or ans > (2 ** 31) - 1) :
+            ans = 0
+        return ans
