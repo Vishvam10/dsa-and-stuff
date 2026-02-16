@@ -7,25 +7,26 @@ class Node:
 """
 
 from typing import Optional
-class Solution:
 
-    def cloneGraph(self, root: Optional['Node']) -> Optional['Node']:
-        if not root :
+
+class Solution:
+    def cloneGraph(self, root: Optional["Node"]) -> Optional["Node"]:
+        if not root:
             return None
 
         vis = {}
 
-        def dfs(node) :
-            if node in vis :
+        def dfs(node):
+            if node in vis:
                 return vis[node]
-            
+
             new_node = Node(node.val)
             vis[node] = new_node
-            
-            for nei in node.neighbors :
+
+            for nei in node.neighbors:
                 new_neighbor = dfs(nei)
                 new_node.neighbors.append(new_neighbor)
 
             return new_node
-        
+
         return dfs(root)
