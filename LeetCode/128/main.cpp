@@ -1,44 +1,46 @@
 class Solution {
 public:
-  int longestConsecutive(vector<int> &arr) {
-
-    int n = arr.size();
-    int ans = 0;
-
-    // init with arr[i] = true for all i in n
-    unordered_map<int, bool> mp;
-
-    for (int i = 0; i < n; i++) {
-      mp[arr[i]] = true;
-    }
-
-    // basically find all the difference 1 elements
-    // so target = 1, x = ele and we need to find
-    // if ele - 1 is present in the array. if so,
-    // mark it as "NOT A STARTING POINT".
-
-    // this eliminates cycles and updating back/forward
-    // references in the chain
-
-    for (int i = 0; i < n; i++) {
-      if (mp.find(arr[i] - 1) != mp.end()) {
-        // can not be a starting point
-        mp[arr[i]] = false;
-      }
-    }
-
-    for (int i = 0; i < n; i++) {
-
-      // checking only potential starting points
-      if (mp[arr[i]] == true) {
-        int count = 0;
-        while (mp.find(arr[i] + count) != mp.end()) {
-          count++;
+    int longestConsecutive(vector<int>& arr) {
+        int n = arr.size();
+        if (n == 0) return 0;
+        sort(arr.begin(), arr.end());
+        int cnt = 1, ans = 1;
+        for (int i = 1; i < n; ++i) {
+            if (arr[i] == arr[i - 1]) {
+                continue;
+            } 
+            else if (arr[i] == arr[i - 1] + 1) {
+                cnt++;
+            } 
+            else {
+                ans = max(ans, cnt);
+                cnt = 1;
+            }
         }
-        ans = max(ans, count);
-      }
-    }
 
-    return ans;
-  }
+        return max(ans, cnt);
+    }
+};
+
+// This gives TLE as worst case is O(N^2) is the input is sorted
+class Solution {
+public:
+    int longestConsecutive(vector<int>& arr) {
+        unordered_set<int> set;
+        for(const int& x : arr){
+            set.insert(x);
+        }
+        int ans = 0;
+        for(const int& x : arr){
+            if(set.find(x - 1) == set.end()){
+                int cur = x, cnt = 1;
+                while(set.find(cur + 1) != set.end()){
+                    cur++;
+                    cnt++;
+                }
+                ans = max(ans, cnt);
+            }
+        }
+        return ans;
+    }
 };

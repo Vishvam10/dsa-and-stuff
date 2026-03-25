@@ -15,6 +15,55 @@ public:
 
         int n = arr.size();
         // vector<vector<int>> dp(n + 1, vector<int>(3, 0));
+        // int cur[3], nxt[3];
+        // memset(cur, 0, sizeof(cur));
+        // memset(nxt, 0, sizeof(nxt));
+
+        int nxt0 = 0, nxt1 = 0, nxt2 = 0;
+
+        for(int i = n - 1; i >= 0; --i) {
+            
+            // Can buy now
+            // cur[0] = max(-arr[i] + nxt[2], nxt[0]);
+            int cur0 = max(-arr[i] + nxt2, nxt0);
+
+            // Cooldown only
+            // cur[1] = nxt[0];
+            int cur1 = nxt0;
+
+            // Sell only
+            // cur[2] = max(arr[i] + nxt[1], nxt[2]);
+            int cur2 = max(arr[i] + nxt1, nxt2);
+
+            // nxt = cur;
+            // memcpy(nxt, cur, sizeof(cur));
+            nxt0 = cur0;
+            nxt1 = cur1;
+            nxt2 = cur2;
+        }
+
+        return nxt0;
+
+    }
+};
+
+class Solution {
+public:
+
+    int maxProfit(vector<int>& arr) {
+
+        // dp[ind][purchaseState] means at that index, what's the max profit we can get
+
+        // dp[i][j] depends on :
+        //      - dp[i + 1][0]
+        //      - dp[i + 1][1]
+        //      - dp[i + 1][2]
+
+        // So, we will start from bottom. Base cases : (already taken care during init)
+        //      - dp[n][...] = 0
+
+        int n = arr.size();
+        // vector<vector<int>> dp(n + 1, vector<int>(3, 0));
         int cur[3], nxt[3];
         memset(cur, 0, sizeof(cur));
         memset(nxt, 0, sizeof(nxt));
