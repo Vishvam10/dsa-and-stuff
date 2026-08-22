@@ -155,23 +155,17 @@ vector<int> split(const string &str, char delim = ' ') {
   return result;
 }
 
-void FastIO() {
-  ios_base::sync_with_stdio(0);
-  cin.tie(0);
-  cout.tie(0);
+void solve() {
+
 }
 
-// =============================================================================
-// MAIN
-// =============================================================================
-
-void solve() { return; }
-
 int main() {
-  FastIO();
-  int tc;
-  cin >> tc;
-  for (int t = 1; t <= tc; t++) {
-    solve();
-  }
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    int tc;
+    cin >> tc;
+    for (int t = 1; t <= tc; t++) {
+        solve();
+    }
 }

@@ -1,7 +1,6 @@
-import os
-import subprocess
-import shutil
 import argparse
+import os
+import shutil
 
 current_dir = os.getcwd()
 root_dir = os.path.dirname(current_dir)
@@ -12,9 +11,7 @@ CPP_TEMPLATE_PATH = os.path.join(templates_dir, "cpp.cpp")
 
 ALLOWED = {
     "cf": "CodeForces",
-    "cs": "CodeStudio",
     "lc": "LeetCode",
-    "gfg": "GeeksForGeeks",
     "cses": "CSES",
 }
 
@@ -27,7 +24,6 @@ def copy_file(src, dest):
         print("File contents copied successfully !")
     except Exception as e:
         print(f"An error occurred: {e}")
-    return
 
 
 def create_template(cstr):
@@ -71,7 +67,6 @@ def create_template_py(output):
     except Exception as e:
         print("Error occurred while copying : ", e)
 
-    return
 
 
 def create_template_cpp(output):
@@ -80,7 +75,6 @@ def create_template_cpp(output):
     except Exception as e:
         print("Error occurred while copying : ", e)
 
-    return
 
 
 def is_valid_cstr(cstr):
@@ -89,7 +83,7 @@ def is_valid_cstr(cstr):
 
     folder, _, language = cstr.split("/")
 
-    if not any(x in folder for x in ALLOWED.keys()) or language not in ALLOWED_EXT:
+    if not any(x in folder for x in ALLOWED) or language not in ALLOWED_EXT:
         return False
 
     return True
