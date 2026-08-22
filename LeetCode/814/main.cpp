@@ -11,25 +11,25 @@
  * };
  */
 class Solution {
-public:
-  TreeNode *solve(TreeNode *node) {
-    if (node == nullptr) {
-      return nullptr;
-    }
+  public:
+	TreeNode* solve(TreeNode* node) {
+		if (node == nullptr) {
+			return nullptr;
+		}
 
-    node->left = solve(node->left);
-    node->right = solve(node->right);
+		node->left = solve(node->left);
+		node->right = solve(node->right);
 
-    if (node->left == nullptr && node->right == nullptr && node->val == 0) {
-      delete node;
-      return nullptr;
-    }
+		if (node->left == nullptr && node->right == nullptr && node->val == 0) {
+			delete node;
+			return nullptr;
+		}
 
-    return node;
-  }
+		return node;
+	}
 
-  TreeNode *pruneTree(TreeNode *root) {
-    TreeNode *node = solve(root);
-    return node;
-  }
+	TreeNode* pruneTree(TreeNode* root) {
+		TreeNode* node = solve(root);
+		return node;
+	}
 };

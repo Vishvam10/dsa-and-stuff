@@ -19,27 +19,27 @@ public:
 */
 
 class Solution {
-public:
-  vector<int> res;
+  public:
+	vector<int> res;
 
-  void traverse(Node *node) {
-    if (node == nullptr) {
-      return;
-    }
+	void traverse(Node* node) {
+		if (node == nullptr) {
+			return;
+		}
 
-    // traverse(node->left);
-    // traverse(node->right);
-    for (int i = 0; i < (node->children).size(); i++) {
-      traverse((node->children)[i]);
-    }
+		// traverse(node->left);
+		// traverse(node->right);
+		for (int i = 0; i < (node->children).size(); i++) {
+			traverse((node->children)[i]);
+		}
 
-    res.emplace_back(node->val);
-  }
+		res.emplace_back(node->val);
+	}
 
-  vector<int> postorder(Node *root) {
+	vector<int> postorder(Node* root) {
 
-    traverse(root);
-    return res;
-    // postorder := left, right, node
-  }
+		traverse(root);
+		return res;
+		// postorder := left, right, node
+	}
 };

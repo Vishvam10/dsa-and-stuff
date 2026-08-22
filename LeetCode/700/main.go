@@ -1,4 +1,5 @@
-package 
+package main
+
 /**
  * Definition for a binary tree node.
  * type TreeNode struct {
@@ -9,15 +10,15 @@ package
  */
 
 func searchBST(root *TreeNode, val int) *TreeNode {
-    if root == nil {
-        return nil
-    }
-    
-    if val < root.Val {
-        return searchBST(root.Left, val)
-    } else if val > root.Val {
-        return searchBST(root.Right, val)
-    }
+	if root == nil {
+		return nil
+	}
 
-    return root;
+	if val < root.Val {
+		return searchBST(root.Left, val)
+	} else if val > root.Val {
+		return searchBST(root.Right, val)
+	}
+
+	return root
 }

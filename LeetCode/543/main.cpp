@@ -11,19 +11,19 @@
  * };
  */
 class Solution {
-public:
-  int check(TreeNode *node, int &ans) {
-    if (node == nullptr)
-      return 0;
-    int left = check(node->left, ans);
-    int right = check(node->right, ans);
-    ans = max(ans, left + right);
-    return 1 + max(left, right);
-  }
+  public:
+	int check(TreeNode* node, int& ans) {
+		if (node == nullptr)
+			return 0;
+		int left = check(node->left, ans);
+		int right = check(node->right, ans);
+		ans = max(ans, left + right);
+		return 1 + max(left, right);
+	}
 
-  int diameterOfBinaryTree(TreeNode *root) {
-    int ans = -1;
-    check(root, ans);
-    return ans;
-  }
+	int diameterOfBinaryTree(TreeNode* root) {
+		int ans = -1;
+		check(root, ans);
+		return ans;
+	}
 };

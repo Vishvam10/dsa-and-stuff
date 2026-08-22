@@ -11,31 +11,31 @@
  * };
  */
 class Solution {
-public:
-  TreeNode *ans = nullptr;
+  public:
+	TreeNode* ans = nullptr;
 
-  void travel(TreeNode *node, int &k) {
-    if (node == nullptr) {
-      return;
-    }
+	void travel(TreeNode* node, int& k) {
+		if (node == nullptr) {
+			return;
+		}
 
-    travel(node->left, k);
+		travel(node->left, k);
 
-    // at the smallest node
-    k -= 1;
+		// at the smallest node
+		k -= 1;
 
-    if (k == 0) {
-      ans = node;
-      return;
-    }
+		if (k == 0) {
+			ans = node;
+			return;
+		}
 
-    travel(node->right, k);
+		travel(node->right, k);
 
-    return;
-  }
+		return;
+	}
 
-  int kthSmallest(TreeNode *root, int k) {
-    travel(root, k);
-    return ans->val;
-  }
+	int kthSmallest(TreeNode* root, int k) {
+		travel(root, k);
+		return ans->val;
+	}
 };

@@ -11,33 +11,33 @@
  * };
  */
 class Solution {
-public:
-  int ans = 0;
+  public:
+	int ans = 0;
 
-  void count(TreeNode *node, bool left) {
-    if (node == nullptr) {
-      return;
-    }
+	void count(TreeNode* node, bool left) {
+		if (node == nullptr) {
+			return;
+		}
 
-    if (node->left == nullptr && node->right == nullptr) {
-      if (left) {
-        ans += node->val;
-      }
-      return;
-    }
+		if (node->left == nullptr && node->right == nullptr) {
+			if (left) {
+				ans += node->val;
+			}
+			return;
+		}
 
-    count(node->left, true);
-    count(node->right, false);
+		count(node->left, true);
+		count(node->right, false);
 
-    return;
-  }
+		return;
+	}
 
-  int sumOfLeftLeaves(TreeNode *root) {
-    if (root == nullptr) {
-      return 0;
-    }
-    count(root->left, true);
-    count(root->right, false);
-    return ans;
-  }
+	int sumOfLeftLeaves(TreeNode* root) {
+		if (root == nullptr) {
+			return 0;
+		}
+		count(root->left, true);
+		count(root->right, false);
+		return ans;
+	}
 };

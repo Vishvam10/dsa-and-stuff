@@ -11,39 +11,39 @@
  * };
  */
 class Solution {
-public:
-  int ans = 0;
+  public:
+	int ans = 0;
 
-  void solve(TreeNode *node, int low, int high) {
-    if (node == nullptr) {
-      return;
-    }
-    // if(node->val >= low && node->val <= high) {
-    //     ans += node->val;
-    //     solve(node->left, low, high);
-    //     solve(node->right, low, high);
-    // } else if(node->val < low) {
-    //     solve(node->right, low, high);
-    // } else if (node->val > high) {
-    //     solve(node->left, low, high);
-    // }
+	void solve(TreeNode* node, int low, int high) {
+		if (node == nullptr) {
+			return;
+		}
+		// if(node->val >= low && node->val <= high) {
+		//     ans += node->val;
+		//     solve(node->left, low, high);
+		//     solve(node->right, low, high);
+		// } else if(node->val < low) {
+		//     solve(node->right, low, high);
+		// } else if (node->val > high) {
+		//     solve(node->left, low, high);
+		// }
 
-    // much better
-    if (node->val >= low && node->val <= high) {
-      ans += node->val;
-    }
-    if (node->left) {
-      solve(node->left, low, high);
-    }
-    if (node->right) {
-      solve(node->right, low, high);
-    }
+		// much better
+		if (node->val >= low && node->val <= high) {
+			ans += node->val;
+		}
+		if (node->left) {
+			solve(node->left, low, high);
+		}
+		if (node->right) {
+			solve(node->right, low, high);
+		}
 
-    return;
-  }
+		return;
+	}
 
-  int rangeSumBST(TreeNode *root, int low, int high) {
-    solve(root, low, high);
-    return ans;
-  }
+	int rangeSumBST(TreeNode* root, int low, int high) {
+		solve(root, low, high);
+		return ans;
+	}
 };

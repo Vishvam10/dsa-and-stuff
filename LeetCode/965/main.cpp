@@ -11,25 +11,25 @@
  * };
  */
 class Solution {
-public:
-  int val;
-  int ans = true;
+  public:
+	int val;
+	int ans = true;
 
-  void solve(TreeNode *node) {
-    if (node == NULL) {
-      return;
-    }
-    if (node->val != val) {
-      ans = false;
-    }
-    solve(node->left);
-    solve(node->right);
-    return;
-  }
+	void solve(TreeNode* node) {
+		if (node == NULL) {
+			return;
+		}
+		if (node->val != val) {
+			ans = false;
+		}
+		solve(node->left);
+		solve(node->right);
+		return;
+	}
 
-  bool isUnivalTree(TreeNode *root) {
-    val = root->val;
-    solve(root);
-    return ans;
-  }
+	bool isUnivalTree(TreeNode* root) {
+		val = root->val;
+		solve(root);
+		return ans;
+	}
 };

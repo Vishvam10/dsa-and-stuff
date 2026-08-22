@@ -11,24 +11,24 @@
  * };
  */
 class Solution {
-public:
-  int ans = 0;
+  public:
+	int ans = 0;
 
-  int solve(TreeNode *node) {
-    if (node == NULL) {
-      return 0;
-    }
+	int solve(TreeNode* node) {
+		if (node == NULL) {
+			return 0;
+		}
 
-    int left = solve(node->left);
-    int right = solve(node->right);
+		int left = solve(node->left);
+		int right = solve(node->right);
 
-    ans += abs(left - right);
+		ans += abs(left - right);
 
-    return node->val + left + right;
-  }
+		return node->val + left + right;
+	}
 
-  int findTilt(TreeNode *root) {
-    solve(root);
-    return ans;
-  }
+	int findTilt(TreeNode* root) {
+		solve(root);
+		return ans;
+	}
 };

@@ -9,23 +9,23 @@
  * };
  */
 class Solution {
-public:
-    unordered_map<int, ListNode*> mp;
-    int n = 0;
-    Solution(ListNode* head) {
-        ListNode *temp = head;
-        int i = 0;
-        while(temp != nullptr) {
-            mp[i] = temp;
-            temp = temp->next;
-            i++;
-        }
-        n = mp.size();
-    }
-    
-    int getRandom() {
-        return mp[rand() % n]->val;
-    }
+  public:
+	unordered_map<int, ListNode*> mp;
+	int n = 0;
+	Solution(ListNode* head) {
+		ListNode* temp = head;
+		int i = 0;
+		while (temp != nullptr) {
+			mp[i] = temp;
+			temp = temp->next;
+			i++;
+		}
+		n = mp.size();
+	}
+
+	int getRandom() {
+		return mp[rand() % n]->val;
+	}
 };
 
 /**

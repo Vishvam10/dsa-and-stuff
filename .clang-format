@@ -1,0 +1,19 @@
+BasedOnStyle: LLVM
+
+IndentWidth: 4
+TabWidth: 4
+UseTab: ForIndentation
+
+ColumnLimit: 80
+
+PointerAlignment: Left
+ReferenceAlignment: Left
+
+IndentCaseLabels: true
+SortIncludes: true
+
+ReflowComments: false
+
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false

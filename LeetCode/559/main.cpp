@@ -19,20 +19,20 @@ public:
 */
 
 class Solution {
-public:
-  int maxDepth(Node *node) {
-    if (node == NULL) {
-      return 0;
-    }
+  public:
+	int maxDepth(Node* node) {
+		if (node == NULL) {
+			return 0;
+		}
 
-    int res = 0;
-    for (int i = 0; i < node->children.size(); i++) {
-      int child = maxDepth(node->children[i]);
-      res = max(res, child);
-    }
-    // int left = maxDepth(node->left);
-    // int right = maxDepth(node->right);
+		int res = 0;
+		for (int i = 0; i < node->children.size(); i++) {
+			int child = maxDepth(node->children[i]);
+			res = max(res, child);
+		}
+		// int left = maxDepth(node->left);
+		// int right = maxDepth(node->right);
 
-    return 1 + res;
-  }
+		return 1 + res;
+	}
 };

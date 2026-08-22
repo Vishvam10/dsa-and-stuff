@@ -11,22 +11,22 @@
  * };
  */
 class Solution {
-public:
-  int maxDepth(TreeNode *node, bool &balanced) {
-    if (!node) {
-      return 0;
-    }
-    int leftHeight = maxDepth(node->left, balanced);
-    int rightHeight = maxDepth(node->right, balanced);
-    if (abs(leftHeight - rightHeight) > 1) {
-      balanced = false;
-    }
-    return 1 + max(leftHeight, rightHeight);
-  }
+  public:
+	int maxDepth(TreeNode* node, bool& balanced) {
+		if (!node) {
+			return 0;
+		}
+		int leftHeight = maxDepth(node->left, balanced);
+		int rightHeight = maxDepth(node->right, balanced);
+		if (abs(leftHeight - rightHeight) > 1) {
+			balanced = false;
+		}
+		return 1 + max(leftHeight, rightHeight);
+	}
 
-  bool isBalanced(TreeNode *root) {
-    bool ans = true;
-    maxDepth(root, ans);
-    return ans;
-  }
+	bool isBalanced(TreeNode* root) {
+		bool ans = true;
+		maxDepth(root, ans);
+		return ans;
+	}
 };

@@ -11,15 +11,17 @@
  * };
  */
 class Solution {
-public:
-  int md(TreeNode *node, int height) {
-    if (node == nullptr) {
-      return height;
-    }
-    int left = md(node->left, height + 1);
-    int right = md(node->right, height + 1);
-    return max(left, right);
-  }
+  public:
+	int md(TreeNode* node, int height) {
+		if (node == nullptr) {
+			return height;
+		}
+		int left = md(node->left, height + 1);
+		int right = md(node->right, height + 1);
+		return max(left, right);
+	}
 
-  int maxDepth(TreeNode *root) { return md(root, 0); }
+	int maxDepth(TreeNode* root) {
+		return md(root, 0);
+	}
 };

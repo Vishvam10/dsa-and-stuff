@@ -1,26 +1,26 @@
 def inp():
-    return int(input())
+	return int(input())
 
 
 def inlt():
-    return list(map(int, input().split()))
+	return list(map(int, input().split()))
 
 
 def insr():
-    return input().strip()
+	return input().strip()
 
 
 def solve():
-    a = inp()
-    b = inp()
-    c = inp()
-    ans = a + b + c
-    ans = max(ans, (a + b) * c)
-    ans = max(ans, a * (b + c))
-    ans = max(ans, a * b * c)
+	a = inp()
+	b = inp()
+	c = inp()
+	ans = a + b + c
+	ans = max(ans, (a + b) * c)
+	ans = max(ans, a * (b + c))
+	ans = max(ans, a * b * c)
 
-    print(ans)
-    return
+	print(ans)
+	return
 
 
 solve()

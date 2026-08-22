@@ -1,34 +1,35 @@
 class Solution {
-public:
-    vector<vector<int>> levelOrderBottom(TreeNode* root) {
-        if (root == nullptr) return {};
-        
-        queue<TreeNode*> q;
-        q.push(root);
-        vector<vector<int>> ans;
+  public:
+	vector<vector<int>> levelOrderBottom(TreeNode* root) {
+		if (root == nullptr)
+			return {};
 
-        while (!q.empty()) {
-            int sz = q.size();
-            vector<int> layer;
+		queue<TreeNode*> q;
+		q.push(root);
+		vector<vector<int>> ans;
 
-            for (int i = 0; i < sz; ++i) {
-                TreeNode* node = q.front();
-                q.pop();
+		while (!q.empty()) {
+			int sz = q.size();
+			vector<int> layer;
 
-                layer.push_back(node->val);
+			for (int i = 0; i < sz; ++i) {
+				TreeNode* node = q.front();
+				q.pop();
 
-                if (node->left != nullptr) {
-                    q.push(node->left);
-                }
-                if (node->right != nullptr) {
-                    q.push(node->right);
-                }
-            }
+				layer.push_back(node->val);
 
-            ans.push_back(layer);
-        }
+				if (node->left != nullptr) {
+					q.push(node->left);
+				}
+				if (node->right != nullptr) {
+					q.push(node->right);
+				}
+			}
 
-        reverse(ans.begin(), ans.end());
-        return ans;
-    }
+			ans.push_back(layer);
+		}
+
+		reverse(ans.begin(), ans.end());
+		return ans;
+	}
 };

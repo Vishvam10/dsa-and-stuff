@@ -1,6 +1,5 @@
-prettify-cache.txt
+.ruff_cache
 out.txt
-Scripts/prettify-cache.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

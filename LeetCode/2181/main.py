@@ -10,16 +10,16 @@ TAGS : linked list, simulation
 
 
 class Solution:
-    def mergeNodes(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        start = head
-        curr = start.next
-        s = 0
-        while curr:
-            if curr.val == 0:
-                head.next = ListNode(s)
-                head = head.next
-                s = 0
-            else:
-                s += curr.val
-            curr = curr.next
-        return start.next
+	def mergeNodes(self, head: Optional[ListNode]) -> Optional[ListNode]:
+		start = head
+		curr = start.next
+		s = 0
+		while curr:
+			if curr.val == 0:
+				head.next = ListNode(s)
+				head = head.next
+				s = 0
+			else:
+				s += curr.val
+			curr = curr.next
+		return start.next

@@ -1,17 +1,17 @@
 class Solution {
-public:
-  int numIdenticalPairs(vector<int> &arr) {
-    int n = arr.size();
-    int ans = 0;
+  public:
+	int numIdenticalPairs(vector<int>& arr) {
+		int n = arr.size();
+		int ans = 0;
 
-    for (int i = 0; i < n; i++) {
-      for (int j = i + 1; j < n; j++) {
-        if (arr[i] == arr[j]) {
-          ans++;
-        }
-      }
-    }
+		for (int i = 0; i < n; i++) {
+			for (int j = i + 1; j < n; j++) {
+				if (arr[i] == arr[j]) {
+					ans++;
+				}
+			}
+		}
 
-    return ans;
-  }
+		return ans;
+	}
 };

@@ -1,12 +1,7 @@
-#include <iostream>     // for cin, cout
-#include <vector>       // for vector
-#include <algorithm>    // for max, min, sort, etc.
-#include <map>          // for map
-#include <set>          // for set
-#include <cmath>        // for sqrt, round
-#include <string>       // for string operations
-#include <limits>       // for numeric_limits if needed
-
+#include <cmath>    // for sqrt, round
+#include <iostream> // for cin, cout
+#include <string>   // for string operations
+#include <vector>   // for vector
 
 using namespace std;
 
@@ -28,23 +23,23 @@ using namespace std;
 #define eb emplace_back
 
 /* PRINTS */
-template <class T> void print_v(vector<T> &v) {
-  cout << "\n";
-  for (auto x : v) {
-    cout << x << " ";
-  }
-  cout << "\n";
+template <class T> void print_v(vector<T>& v) {
+	cout << "\n";
+	for (auto x : v) {
+		cout << x << " ";
+	}
+	cout << "\n";
 }
 
-template <class T> void print_v2d(vector<vector<T>> &v) {
-  cout << "\n";
-  for (auto x : v) {
-    for (auto y : x) {
-      cout << y << " ";
-    }
-    cout << "\n";
-  }
-  cout << "\n";
+template <class T> void print_v2d(vector<vector<T>>& v) {
+	cout << "\n";
+	for (auto x : v) {
+		for (auto y : x) {
+			cout << y << " ";
+		}
+		cout << "\n";
+	}
+	cout << "\n";
 }
 
 /* UTILS */
@@ -53,62 +48,68 @@ template <class T> void print_v2d(vector<vector<T>> &v) {
 #define read(type) readInt<type>()
 
 ll min(ll a, int b) {
-  if (a < b)
-    return a;
-  return b;
+	if (a < b)
+		return a;
+	return b;
 }
 
 ll min(int a, ll b) {
-  if (a < b)
-    return a;
-  return b;
+	if (a < b)
+		return a;
+	return b;
 }
 
 ll max(ll a, int b) {
-  if (a > b)
-    return a;
-  return b;
+	if (a > b)
+		return a;
+	return b;
 }
 
 ll max(int a, ll b) {
-  if (a > b)
-    return a;
-  return b;
+	if (a > b)
+		return a;
+	return b;
 }
 
 ll gcd(ll a, ll b) {
-  if (b == 0)
-    return a;
-  return gcd(b, a % b);
+	if (b == 0)
+		return a;
+	return gcd(b, a % b);
 }
 
-ll lcm(ll a, ll b) { return a / gcd(a, b) * b; }
+ll lcm(ll a, ll b) {
+	return a / gcd(a, b) * b;
+}
 
 string to_upper(string a) {
-  for (int i = 0; i < (int)a.size(); ++i)
-    if (a[i] >= 'a' && a[i] <= 'z')
-      a[i] -= 'a' - 'A';
-  return a;
+	for (int i = 0; i < (int)a.size(); ++i)
+		if (a[i] >= 'a' && a[i] <= 'z')
+			a[i] -= 'a' - 'A';
+	return a;
 }
 
 string to_lower(string a) {
-  for (int i = 0; i < (int)a.size(); ++i)
-    if (a[i] >= 'A' && a[i] <= 'Z')
-      a[i] += 'a' - 'A';
-  return a;
+	for (int i = 0; i < (int)a.size(); ++i)
+		if (a[i] >= 'A' && a[i] <= 'Z')
+			a[i] += 'a' - 'A';
+	return a;
 }
 
 bool prime(ll a) {
-  if (a == 1)
-    return 0;
-  for (int i = 2; i <= round(sqrt(a)); ++i)
-    if (a % i == 0)
-      return 0;
-  return 1;
+	if (a == 1)
+		return 0;
+	for (int i = 2; i <= round(sqrt(a)); ++i)
+		if (a % i == 0)
+			return 0;
+	return 1;
 }
 
-void yes() { cout << "YES\n"; }
-void no() { cout << "NO\n"; }
+void yes() {
+	cout << "YES\n";
+}
+void no() {
+	cout << "NO\n";
+}
 
 /*  All Required define Pre-Processors and typedef Constants */
 typedef long int int32;
@@ -117,38 +118,37 @@ typedef long long int int64;
 typedef unsigned long long int uint64;
 
 void FastIO() {
-  ios_base::sync_with_stdio(0);
-  cin.tie(0);
-  cout.tie(0);
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
 }
 
 void solve() {
-  int n;
-  cin >> n;
+	int n;
+	cin >> n;
 
-  int mx;
-  cin >> mx;
+	int mx;
+	cin >> mx;
 
-  uint64 ans = 0;
+	uint64 ans = 0;
 
-  for(int i = 1; i < n; ++i) {
-    int cur;
-    cin >> cur;
+	for (int i = 1; i < n; ++i) {
+		int cur;
+		cin >> cur;
 
-    if(cur > mx) {
-      mx = cur;
-    } else {
-      ans += (mx - cur);
-    }
+		if (cur > mx) {
+			mx = cur;
+		} else {
+			ans += (mx - cur);
+		}
+	}
 
-  }
+	cout << ans;
 
-  cout << ans;
-
-  return;
+	return;
 }
 
 int main() {
-  FastIO();
-  solve();
+	FastIO();
+	solve();
 }

@@ -11,37 +11,37 @@
  * };
  */
 class Solution {
-public:
-  vector<vector<int>> ans;
+  public:
+	vector<vector<int>> ans;
 
-  bool isLeaf(TreeNode *node) {
-    return (node->left == nullptr) && (node->right == nullptr);
-  }
+	bool isLeaf(TreeNode* node) {
+		return (node->left == nullptr) && (node->right == nullptr);
+	}
 
-  void solve(TreeNode *node, vector<int> path, int target) {
-    if (node == nullptr) {
-      return;
-    }
-    path.emplace_back(node->val);
+	void solve(TreeNode* node, vector<int> path, int target) {
+		if (node == nullptr) {
+			return;
+		}
+		path.emplace_back(node->val);
 
-    if (isLeaf(node)) {
-      int s = accumulate(path.begin(), path.end(), 0);
-      if (s == target) {
-        ans.emplace_back(path);
-      };
-    }
+		if (isLeaf(node)) {
+			int s = accumulate(path.begin(), path.end(), 0);
+			if (s == target) {
+				ans.emplace_back(path);
+			};
+		}
 
-    // even if it is a leaf, we go to left and right child
-    // this will return nothing anyway, so it's fine
-    solve(node->left, path, target);
-    solve(node->right, path, target);
-    path.pop_back();
-    return;
-  }
+		// even if it is a leaf, we go to left and right child
+		// this will return nothing anyway, so it's fine
+		solve(node->left, path, target);
+		solve(node->right, path, target);
+		path.pop_back();
+		return;
+	}
 
-  vector<vector<int>> pathSum(TreeNode *root, int targetSum) {
-    vector<int> path;
-    solve(root, path, targetSum);
-    return ans;
-  }
+	vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
+		vector<int> path;
+		solve(root, path, targetSum);
+		return ans;
+	}
 };

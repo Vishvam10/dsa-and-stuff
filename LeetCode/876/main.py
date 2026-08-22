@@ -4,16 +4,16 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        temp = head
-        if temp.next == None:
-            return temp
+	def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
+		temp = head
+		if temp.next == None:
+			return temp
 
-        slow = temp
-        fast = temp
+		slow = temp
+		fast = temp
 
-        while fast and fast.next:
-            slow = slow.next
-            fast = fast.next.next
+		while fast and fast.next:
+			slow = slow.next
+			fast = fast.next.next
 
-        return slow
+		return slow

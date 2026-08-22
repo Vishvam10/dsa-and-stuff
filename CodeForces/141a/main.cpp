@@ -4,25 +4,25 @@
 
 int main() {
 
-  std::string a, b, c;
-  std::cin >> a >> b >> c;
+	std::string a, b, c;
+	std::cin >> a >> b >> c;
 
-  std::string temp;
-  temp = a + b;
+	std::string temp;
+	temp = a + b;
 
-  if (temp.length() > c.length()) {
-    std::cout << "NO" << std::endl;
-    return 0;
-  }
+	if (temp.length() > c.length()) {
+		std::cout << "NO" << std::endl;
+		return 0;
+	}
 
-  sort(temp.begin(), temp.end());
-  sort(c.begin(), c.end());
+	sort(temp.begin(), temp.end());
+	sort(c.begin(), c.end());
 
-  if (temp == c) {
-    std::cout << "YES" << std::endl;
-  } else {
-    std::cout << "NO" << std::endl;
-  }
+	if (temp == c) {
+		std::cout << "YES" << std::endl;
+	} else {
+		std::cout << "NO" << std::endl;
+	}
 
-  return 0;
+	return 0;
 }

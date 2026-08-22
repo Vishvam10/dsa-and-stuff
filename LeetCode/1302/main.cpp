@@ -11,33 +11,33 @@
  * };
  */
 class Solution {
-public:
-  int deepestLeavesSum(TreeNode *root) {
+  public:
+	int deepestLeavesSum(TreeNode* root) {
 
-    queue<TreeNode *> q;
-    q.push(root);
+		queue<TreeNode*> q;
+		q.push(root);
 
-    int ans;
+		int ans;
 
-    while (!q.empty()) {
+		while (!q.empty()) {
 
-      int sz = q.size();
-      ans = 0;
+			int sz = q.size();
+			ans = 0;
 
-      for (int i = 0; i < sz; i++) {
-        TreeNode *node = q.front();
-        q.pop();
-        ans += node->val;
+			for (int i = 0; i < sz; i++) {
+				TreeNode* node = q.front();
+				q.pop();
+				ans += node->val;
 
-        if (node->left != nullptr) {
-          q.push(node->left);
-        }
-        if (node->right != nullptr) {
-          q.push(node->right);
-        }
-      }
-    }
+				if (node->left != nullptr) {
+					q.push(node->left);
+				}
+				if (node->right != nullptr) {
+					q.push(node->right);
+				}
+			}
+		}
 
-    return ans;
-  }
+		return ans;
+	}
 };

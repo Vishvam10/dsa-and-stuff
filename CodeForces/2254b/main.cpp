@@ -1,44 +1,43 @@
+#include <algorithm>
 #include <iostream>
 #include <string>
-#include <algorithm>
 
 using namespace std;
 
 void solve() {
-    int n;
-    string s;
-    cin >> n >> s;
+	int n;
+	string s;
+	cin >> n >> s;
 
-    int res = 1;
-    for (int i = 1; i < n; i++) res += (s[i] != s[i - 1]);
+	int res = 1;
+	for (int i = 1; i < n; i++)
+		res += (s[i] != s[i - 1]);
 
-    int ans = res;
+	int ans = res;
 
-    for (int i = 1; i <= n - 2; i++) {
-        if (s[i - 1] == s[i + 1] && s[i] != s[i - 1]) {
-            ans = min(ans, res - 2);
-        }
+	for (int i = 1; i <= n - 2; i++) {
+		if (s[i - 1] == s[i + 1] && s[i] != s[i - 1]) {
+			ans = min(ans, res - 2);
+		}
 
-        else if (s[i - 1] != s[i] &&
-                 s[i] != s[i + 1] &&
-                 s[i - 1] != s[i + 1]) {
-            ans = min(ans, res - 1);
-        }
-    }
+		else if (s[i - 1] != s[i] && s[i] != s[i + 1] && s[i - 1] != s[i + 1]) {
+			ans = min(ans, res - 1);
+		}
+	}
 
-    cout << ans << '\n';
+	cout << ans << '\n';
 }
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr);
 
-    int T;
-    cin >> T;
+	int T;
+	cin >> T;
 
-    while (T--) {
-        solve();
-    }
+	while (T--) {
+		solve();
+	}
 
-    return 0;
+	return 0;
 }

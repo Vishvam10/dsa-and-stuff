@@ -1,18 +1,20 @@
 class MyCalendar {
-public:
-    set<pair<int, int>> cal;
+  public:
+	set<pair<int, int>> cal;
 
-    MyCalendar() {}
+	MyCalendar() {}
 
-    bool book(int startTime, int endTime) {
-        auto nxt = cal.lower_bound({startTime, endTime});
+	bool book(int startTime, int endTime) {
+		auto nxt = cal.lower_bound({startTime, endTime});
 
-        if (nxt != cal.end() && nxt->first < endTime) return false;
-        if (nxt != cal.begin() && prev(nxt)->second > startTime) return false;
+		if (nxt != cal.end() && nxt->first < endTime)
+			return false;
+		if (nxt != cal.begin() && prev(nxt)->second > startTime)
+			return false;
 
-        cal.insert({startTime, endTime});
-        return true;
-    }
+		cal.insert({startTime, endTime});
+		return true;
+	}
 };
 
 /**
@@ -22,17 +24,18 @@ public:
  */
 
 class MyCalendar {
-public:
-    vector<pair<int, int>> cal;
-    MyCalendar() {}
-    
-    bool book(int startTime, int endTime) {
-        for(const auto& [start, end] : cal) {
-            if(startTime < end && endTime > start) return false;
-        }
-        cal.push_back({startTime, endTime});
-        return true;
-    }
+  public:
+	vector<pair<int, int>> cal;
+	MyCalendar() {}
+
+	bool book(int startTime, int endTime) {
+		for (const auto& [start, end] : cal) {
+			if (startTime < end && endTime > start)
+				return false;
+		}
+		cal.push_back({startTime, endTime});
+		return true;
+	}
 };
 
 /**

@@ -5,11 +5,11 @@ TAGS : math, sorting, counting, enumeration
 
 
 class Solution:
-    def reorderedPowerOf2(self, n: int) -> bool:
-        n1 = sorted(str(n))
-        for i in range(32):
-            res = sorted(str(2**i))
-            if res == n1:
-                return True
+	def reorderedPowerOf2(self, n: int) -> bool:
+		n1 = sorted(str(n))
+		for i in range(32):
+			res = sorted(str(2**i))
+			if res == n1:
+				return True
 
-        return False
+		return False

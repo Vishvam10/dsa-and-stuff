@@ -4,8 +4,8 @@ import shutil
 current_dir = os.getcwd()
 root_dir = os.path.dirname(current_dir)
 
-ALLOWED = ["CodeForces", "CodeStudio", "LeetCode", "GeeksForGeeks"]
-ALLOWED_EXT = ["py", "cpp", "java"]
+ALLOWED = ["codeforces", "cses", "leetcode"]
+ALLOWED_EXT = ["py", "cpp", "go", "rs"]
 
 
 def get_folders():
@@ -63,8 +63,6 @@ def refactor_to_folders(root_dir):
     except:
         pass
 
-    return
-
 
 @ignore_dir_errors
 def rename_directories(root_dir):
@@ -79,8 +77,6 @@ def rename_directories(root_dir):
             if not os.path.exists(new_subdir_path):
                 os.rename(subdir_path, new_subdir_path)
                 print(f"Renamed: {subdir_name} -> {new_subdir_name}")
-
-    return
 
 
 @ignore_dir_errors
@@ -102,8 +98,6 @@ def rename_files(root_dir):
                     if not os.path.exists(new_file_path):
                         os.rename(file_path, new_file_path)
                         print(f"Renamed: {file_name} -> {new_file_name}")
-
-    return
 
 
 if __name__ == "__main__":

@@ -11,30 +11,30 @@
  * };
  */
 class Solution {
-public:
-  bool solve(TreeNode *node, int target, unordered_map<int, bool> &mp) {
-    if (node == nullptr) {
-      return false;
-    }
+  public:
+	bool solve(TreeNode* node, int target, unordered_map<int, bool>& mp) {
+		if (node == nullptr) {
+			return false;
+		}
 
-    if (mp.find(target - node->val) != mp.end()) {
-      return true;
-    }
+		if (mp.find(target - node->val) != mp.end()) {
+			return true;
+		}
 
-    mp[node->val] = true;
+		mp[node->val] = true;
 
-    bool left = solve(node->left, target, mp);
-    bool right = solve(node->right, target, mp);
+		bool left = solve(node->left, target, mp);
+		bool right = solve(node->right, target, mp);
 
-    return left || right;
-  }
+		return left || right;
+	}
 
-  bool findTarget(TreeNode *root, int k) {
-    if (root == nullptr) {
-      return false;
-    }
-    unordered_map<int, bool> mp;
-    bool ans = solve(root, k, mp);
-    return ans;
-  }
+	bool findTarget(TreeNode* root, int k) {
+		if (root == nullptr) {
+			return false;
+		}
+		unordered_map<int, bool> mp;
+		bool ans = solve(root, k, mp);
+		return ans;
+	}
 };

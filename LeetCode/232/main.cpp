@@ -1,43 +1,47 @@
 class MyQueue {
 
-private:
-  stack<int> st;
-  stack<int> temp;
+  private:
+	stack<int> st;
+	stack<int> temp;
 
-public:
-  MyQueue() {}
+  public:
+	MyQueue() {}
 
-  // [1, 2, 3, 4, 5]
-  //  qh          sh
+	// [1, 2, 3, 4, 5]
+	//  qh          sh
 
-  // [5, 4, 3, 2, 1]
-  //              qh
-  //              sh
+	// [5, 4, 3, 2, 1]
+	//              qh
+	//              sh
 
-  void push(int x) {
+	void push(int x) {
 
-    while (!st.empty()) {
-      temp.push(st.top());
-      st.pop();
-    }
+		while (!st.empty()) {
+			temp.push(st.top());
+			st.pop();
+		}
 
-    st.push(x);
+		st.push(x);
 
-    while (!temp.empty()) {
-      st.push(temp.top());
-      temp.pop();
-    }
-  }
+		while (!temp.empty()) {
+			st.push(temp.top());
+			temp.pop();
+		}
+	}
 
-  int pop() {
-    int val = st.top();
-    st.pop();
-    return val;
-  }
+	int pop() {
+		int val = st.top();
+		st.pop();
+		return val;
+	}
 
-  int peek() { return st.top(); }
+	int peek() {
+		return st.top();
+	}
 
-  bool empty() { return st.empty(); }
+	bool empty() {
+		return st.empty();
+	}
 };
 
 /**

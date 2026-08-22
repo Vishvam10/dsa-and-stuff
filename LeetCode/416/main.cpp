@@ -1,36 +1,37 @@
 class Solution {
-public:
-    bool canPartition(vector<int>& nums) {
-        int total = accumulate(nums.begin(), nums.end(), 0);
-        if (total % 2) return false;
+  public:
+	bool canPartition(vector<int>& nums) {
+		int total = accumulate(nums.begin(), nums.end(), 0);
+		if (total % 2)
+			return false;
 
-        int n = nums.size();
-        int target = total / 2;
+		int n = nums.size();
+		int target = total / 2;
 
-        vector<bool> prev(target + 1, false), cur(target + 1, false);
-        prev[0] = true;
+		vector<bool> prev(target + 1, false), cur(target + 1, false);
+		prev[0] = true;
 
-        for (int i = 1; i <= n; ++i) {
+		for (int i = 1; i <= n; ++i) {
 
-            cur[0] = true;
+			cur[0] = true;
 
-            for (int sum = 1; sum <= target; ++sum) {   
+			for (int sum = 1; sum <= target; ++sum) {
 
-                bool dont = prev[sum];
+				bool dont = prev[sum];
 
-                bool pick = false;
-                if (sum >= nums[i - 1]){
-                    pick = prev[sum - nums[i - 1]];
-                }
+				bool pick = false;
+				if (sum >= nums[i - 1]) {
+					pick = prev[sum - nums[i - 1]];
+				}
 
-                cur[sum] = pick || dont;
-            }
+				cur[sum] = pick || dont;
+			}
 
-            prev = cur;
-        }
+			prev = cur;
+		}
 
-        return prev[target];
-    }
+		return prev[target];
+	}
 };
 
 /*
@@ -63,7 +64,7 @@ public:
                 if(sum >= nums[i - 1]) {
                     pick = dp[i - 1][sum - nums[i - 1]];
                 }
-                
+
                 dp[i][sum] = pick || dont;
             }
         }

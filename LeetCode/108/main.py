@@ -11,14 +11,14 @@ TAGS : array, tree, bst, divide and conquer, binary tree
 
 
 class Solution:
-    def helper(self, arr, left, right):
-        mid = left + (right - left) // 2
-        if left > right:
-            return
-        root = TreeNode(arr[mid])
-        root.left = self.helper(arr, left, mid - 1)
-        root.right = self.helper(arr, mid + 1, right)
-        return root
+	def helper(self, arr, left, right):
+		mid = left + (right - left) // 2
+		if left > right:
+			return
+		root = TreeNode(arr[mid])
+		root.left = self.helper(arr, left, mid - 1)
+		root.right = self.helper(arr, mid + 1, right)
+		return root
 
-    def sortedArrayToBST(self, arr: List[int]) -> Optional[TreeNode]:
-        return self.helper(arr, 0, len(arr) - 1)
+	def sortedArrayToBST(self, arr: List[int]) -> Optional[TreeNode]:
+		return self.helper(arr, 0, len(arr) - 1)

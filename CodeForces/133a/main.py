@@ -1,16 +1,16 @@
 def insr():
-    return input().strip()
+	return input().strip()
 
 
 def solve():
-    s = insr()
+	s = insr()
 
-    for ch in s:
-        if ch == "H" or ch == "Q" or ch == "9":
-            print("YES")
-            return
-    print("NO")
-    return
+	for ch in s:
+		if ch == "H" or ch == "Q" or ch == "9":
+			print("YES")
+			return
+	print("NO")
+	return
 
 
 solve()

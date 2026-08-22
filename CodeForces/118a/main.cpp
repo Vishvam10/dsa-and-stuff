@@ -1,14 +1,9 @@
-#include <algorithm> // for max, min, sort, etc.
-#include <climits>   // for LLONG_MAX
-#include <cmath>     // for sqrt, round
-#include <iostream>  // for cin, cout
-#include <limits>    // for numeric_limits if needed
-#include <map>       // for map
-#include <numeric>   // for reduce
-#include <set>       // for set
-#include <sstream>   // for getline
-#include <string>    // for string operations
-#include <vector>    // for vector
+#include <cmath> // for sqrt, round
+#include <cstddef>
+#include <iostream> // for cin, cout
+#include <sstream>  // for getline
+#include <string>   // for string operations
+#include <vector>   // for vector
 
 using namespace std;
 
@@ -29,48 +24,48 @@ typedef unsigned long long int uint64;
 // PRINTS AND UTILS
 // =============================================================================
 
-template <class T> void print_v(vector<T> &v) {
-  for (auto x : v) {
-    cout << x << " ";
-  }
+template <class T> void print_v(vector<T>& v) {
+	for (auto x : v) {
+		cout << x << " ";
+	}
 }
 
-template <class T> void print_v2d(vector<vector<T>> &v) {
-  for (auto x : v) {
-    for (auto y : x) {
-      cout << y << " ";
-    }
-    cout << "\n";
-  }
+template <class T> void print_v2d(vector<vector<T>>& v) {
+	for (auto x : v) {
+		for (auto y : x) {
+			cout << y << " ";
+		}
+		cout << "\n";
+	}
 }
 
-template <typename T> void print_one(const string &name, const T &value) {
-  cout << name << " = " << value << ", ";
+template <typename T> void print_one(const string& name, const T& value) {
+	cout << name << " = " << value << ", ";
 }
 
 template <typename T, typename... Args>
-void debug_print(const string &names, const T &value, const Args &...args) {
-  stringstream ss(names);
-  string name;
-  int paren_count = 0;
+void debug_print(const string& names, const T& value, const Args&... args) {
+	stringstream ss(names);
+	string name;
+	int paren_count = 0;
 
-  while (getline(ss, name, ',')) {
-    if (paren_count == 0 || name.back() != ')')
-      break;
-  }
+	while (getline(ss, name, ',')) {
+		if (paren_count == 0 || name.back() != ')')
+			break;
+	}
 
-  // Remove leading spaces
-  size_t first = name.find_first_not_of(" ");
-  if (first != string::npos)
-    name = name.substr(first);
+	// Remove leading spaces
+	size_t first = name.find_first_not_of(" ");
+	if (first != string::npos)
+		name = name.substr(first);
 
-  print_one(name, value);
-  if constexpr (sizeof...(args) > 0) {
-    auto rest_names = names.substr(names.find(',') + 1);
-    debug_print(rest_names, args...);
-  } else {
-    cout << "\n";
-  }
+	print_one(name, value);
+	if constexpr (sizeof...(args) > 0) {
+		auto rest_names = names.substr(names.find(',') + 1);
+		debug_print(rest_names, args...);
+	} else {
+		cout << "\n";
+	}
 }
 
 // =============================================================================
@@ -78,44 +73,46 @@ void debug_print(const string &names, const T &value, const Args &...args) {
 // =============================================================================
 
 int64 min(int64 a, int b) {
-  if (a < b)
-    return a;
-  return b;
+	if (a < b)
+		return a;
+	return b;
 }
 
 int64 min(int a, int64 b) {
-  if (a < b)
-    return a;
-  return b;
+	if (a < b)
+		return a;
+	return b;
 }
 
 int64 max(int64 a, int b) {
-  if (a > b)
-    return a;
-  return b;
+	if (a > b)
+		return a;
+	return b;
 }
 
 int64 max(int a, int64 b) {
-  if (a > b)
-    return a;
-  return b;
+	if (a > b)
+		return a;
+	return b;
 }
 
 int64 gcd(int64 a, int64 b) {
-  if (b == 0)
-    return a;
-  return gcd(b, a % b);
+	if (b == 0)
+		return a;
+	return gcd(b, a % b);
 }
 
-int64 lcm(int64 a, int64 b) { return a / gcd(a, b) * b; }
+int64 lcm(int64 a, int64 b) {
+	return a / gcd(a, b) * b;
+}
 
 bool isPrime(int64 a) {
-  if (a == 1)
-    return true;
-  for (int i = 2; i <= round(sqrt(a)); ++i)
-    if (a % i == 0)
-      return false;
-  return true;
+	if (a == 1)
+		return true;
+	for (int i = 2; i <= round(sqrt(a)); ++i)
+		if (a % i == 0)
+			return false;
+	return true;
 }
 
 // =============================================================================
@@ -123,41 +120,41 @@ bool isPrime(int64 a) {
 // =============================================================================
 
 string to_upper(string a) {
-  for (int i = 0; i < (int)a.size(); ++i)
-    if (a[i] >= 'a' && a[i] <= 'z')
-      a[i] -= 'a' - 'A';
-  return a;
+	for (int i = 0; i < (int)a.size(); ++i)
+		if (a[i] >= 'a' && a[i] <= 'z')
+			a[i] -= 'a' - 'A';
+	return a;
 }
 
 string to_lower(string a) {
-  for (int i = 0; i < (int)a.size(); ++i)
-    if (a[i] >= 'A' && a[i] <= 'Z')
-      a[i] += 'a' - 'A';
-  return a;
+	for (int i = 0; i < (int)a.size(); ++i)
+		if (a[i] >= 'A' && a[i] <= 'Z')
+			a[i] += 'a' - 'A';
+	return a;
 }
 
 // =============================================================================
 // INPUT UTILS
 // =============================================================================
 
-vector<int> split(const string &str, char delim = ' ') {
-  vector<int> result;
-  stringstream ss(str);
-  string token;
+vector<int> split(const string& str, char delim = ' ') {
+	vector<int> result;
+	stringstream ss(str);
+	string token;
 
-  while (getline(ss, token, delim)) {
-    if (!token.empty()) {
-      result.push_back(stoi(token));
-    }
-  }
+	while (getline(ss, token, delim)) {
+		if (!token.empty()) {
+			result.push_back(stoi(token));
+		}
+	}
 
-  return result;
+	return result;
 }
 
 void FastIO() {
-  ios_base::sync_with_stdio(0);
-  cin.tie(0);
-  cout.tie(0);
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
 }
 
 // =============================================================================
@@ -165,38 +162,38 @@ void FastIO() {
 // =============================================================================
 
 bool isVowel(char ch) {
-  return ch == 'a' || ch == 'A' || ch == 'e' || ch == 'E' || ch == 'i' ||
-         ch == 'I' || ch == 'o' || ch == 'O' || ch == 'u' || ch == 'U' ||
-         ch == 'y' || ch == 'Y';
+	return ch == 'a' || ch == 'A' || ch == 'e' || ch == 'E' || ch == 'i' ||
+	       ch == 'I' || ch == 'o' || ch == 'O' || ch == 'u' || ch == 'U' ||
+	       ch == 'y' || ch == 'Y';
 }
 
 void solve() {
 
-  string s, ans;
-  cin >> s;
+	string s, ans;
+	cin >> s;
 
-  for (size_t i = 0; i < s.length(); ++i) {
-    char ch = s[i];
+	for (size_t i = 0; i < s.length(); ++i) {
+		char ch = s[i];
 
-    if (isVowel(ch)) {
-      continue;
-    } else {
+		if (isVowel(ch)) {
+			continue;
+		} else {
 
-      if (ch >= 'A' && ch <= 'Z') {
-        ch = ch - 'A' + 'a';
-      }
+			if (ch >= 'A' && ch <= 'Z') {
+				ch = ch - 'A' + 'a';
+			}
 
-      ans.push_back('.');
-      ans.push_back(ch);
-    }
-  }
+			ans.push_back('.');
+			ans.push_back(ch);
+		}
+	}
 
-  cout << ans;
+	cout << ans;
 
-  return;
+	return;
 }
 
 int main() {
-  FastIO();
-  solve();
+	FastIO();
+	solve();
 }

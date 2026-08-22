@@ -1,39 +1,38 @@
 class Solution {
-public:
+  public:
+	int findCheapestPrice(int n, vector<vector<int>>& fl, int src, int dst,
+	                      int k) {
+		// {node, wt}
+		vector<vector<pair<int, int>>> adj(n);
+		for (const auto& node : fl) {
+			adj[node[0]].push_back({node[1], node[2]});
+		}
 
-    int findCheapestPrice(
-        int n, vector<vector<int>>& fl, int src, int dst, int k
-    ) {
-        // {node, wt}
-        vector<vector<pair<int, int>>> adj(n);
-        for(const auto& node : fl) {
-            adj[node[0]].push_back({node[1], node[2]});
-        }
-        
-        vector<int> dists(n, INT_MAX);
-        
-        // {stops, dist, node}
-        queue<tuple<int,int,int>> q;
+		vector<int> dists(n, INT_MAX);
 
-        q.push({0, 0, src});
-        dists[src] = 0;
+		// {stops, dist, node}
+		queue<tuple<int, int, int>> q;
 
-        while (!q.empty()) {
-            auto [stops, dist, node] = q.front();
-            q.pop();
+		q.push({0, 0, src});
+		dists[src] = 0;
 
-            if (stops > k) continue;
+		while (!q.empty()) {
+			auto [stops, dist, node] = q.front();
+			q.pop();
 
-            for (const auto& [nei, wt] : adj[node]) {
-                int newDist = dist + wt;
+			if (stops > k)
+				continue;
 
-                if (newDist < dists[nei]) {
-                    dists[nei] = newDist;
-                    q.push({stops + 1, newDist, nei});
-                }
-            }
-        }
+			for (const auto& [nei, wt] : adj[node]) {
+				int newDist = dist + wt;
 
-        return dists[dst] == INT_MAX ? -1 : dists[dst];
-    }
+				if (newDist < dists[nei]) {
+					dists[nei] = newDist;
+					q.push({stops + 1, newDist, nei});
+				}
+			}
+		}
+
+		return dists[dst] == INT_MAX ? -1 : dists[dst];
+	}
 };

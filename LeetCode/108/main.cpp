@@ -11,24 +11,24 @@
  * };
  */
 class Solution {
-public:
-  TreeNode *construct(vector<int> arr, int low, int high) {
+  public:
+	TreeNode* construct(vector<int> arr, int low, int high) {
 
-    if (low > high) {
-      return nullptr;
-    }
+		if (low > high) {
+			return nullptr;
+		}
 
-    int mid = low + (high - low) / 2;
+		int mid = low + (high - low) / 2;
 
-    TreeNode *node = new TreeNode(arr[mid]);
-    node->left = construct(arr, low, mid - 1);
-    node->right = construct(arr, mid + 1, high);
+		TreeNode* node = new TreeNode(arr[mid]);
+		node->left = construct(arr, low, mid - 1);
+		node->right = construct(arr, mid + 1, high);
 
-    return node;
-  }
+		return node;
+	}
 
-  TreeNode *sortedArrayToBST(vector<int> &arr) {
-    int n = arr.size();
-    return construct(arr, 0, n - 1);
-  }
+	TreeNode* sortedArrayToBST(vector<int>& arr) {
+		int n = arr.size();
+		return construct(arr, 0, n - 1);
+	}
 };

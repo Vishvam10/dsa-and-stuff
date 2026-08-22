@@ -11,27 +11,27 @@
  * };
  */
 class Solution {
-public:
-  bool check(TreeNode *node, int target) {
-    if (node == nullptr) {
-      return false;
-    }
+  public:
+	bool check(TreeNode* node, int target) {
+		if (node == nullptr) {
+			return false;
+		}
 
-    if (node->left == nullptr && node->right == nullptr &&
-        target - node->val == 0) {
-      return true;
-    }
+		if (node->left == nullptr && node->right == nullptr &&
+		    target - node->val == 0) {
+			return true;
+		}
 
-    bool left = check(node->left, target - node->val);
-    bool right = check(node->right, target - node->val);
+		bool left = check(node->left, target - node->val);
+		bool right = check(node->right, target - node->val);
 
-    return left || right;
-  }
+		return left || right;
+	}
 
-  bool hasPathSum(TreeNode *root, int targetSum) {
-    if (root == nullptr && targetSum == 0) {
-      return false;
-    }
-    return check(root, targetSum);
-  }
+	bool hasPathSum(TreeNode* root, int targetSum) {
+		if (root == nullptr && targetSum == 0) {
+			return false;
+		}
+		return check(root, targetSum);
+	}
 };

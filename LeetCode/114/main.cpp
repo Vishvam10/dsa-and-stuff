@@ -11,27 +11,27 @@
  * };
  */
 class Solution {
-public:
-  void solve(TreeNode *node, TreeNode *&head) {
-    if (node == nullptr)
-      return;
+  public:
+	void solve(TreeNode* node, TreeNode*& head) {
+		if (node == nullptr)
+			return;
 
-    head->right = node;
-    head->left = nullptr;
+		head->right = node;
+		head->left = nullptr;
 
-    TreeNode *left = node->left;
-    TreeNode *right = node->right;
+		TreeNode* left = node->left;
+		TreeNode* right = node->right;
 
-    head = head->right;
+		head = head->right;
 
-    solve(left, head);
-    solve(right, head);
-  }
+		solve(left, head);
+		solve(right, head);
+	}
 
-  void flatten(TreeNode *root) {
-    TreeNode dummy{0, nullptr, nullptr};
-    TreeNode *head = &dummy;
-    solve(root, head);
-    root = head;
-  }
+	void flatten(TreeNode* root) {
+		TreeNode dummy{0, nullptr, nullptr};
+		TreeNode* head = &dummy;
+		solve(root, head);
+		root = head;
+	}
 };

@@ -11,13 +11,15 @@ TAGS : tree, dfs, bfs, binary tree
 
 
 class Solution:
-    def hasPathSum(self, root: Optional[TreeNode], target: int) -> bool:
-        if not root:
-            return False
+	def hasPathSum(self, root: Optional[TreeNode], target: int) -> bool:
+		if not root:
+			return False
 
-        if not root.left and not root.right and root.val == target:
-            return True
+		if not root.left and not root.right and root.val == target:
+			return True
 
-        target -= root.val
+		target -= root.val
 
-        return self.hasPathSum(root.left, target) or self.hasPathSum(root.right, target)
+		return self.hasPathSum(root.left, target) or self.hasPathSum(
+			root.right, target
+		)

@@ -1,11 +1,11 @@
 def insr():
-    return input().strip()
+	return input().strip()
 
 
 a = insr()
 b = insr()
 
 if a == b[::-1]:
-    print("YES")
+	print("YES")
 else:
-    print("NO")
+	print("NO")

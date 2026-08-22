@@ -11,30 +11,30 @@
  * };
  */
 class Solution {
-public:
-  TreeNode *prev = nullptr;
-  int ans = INT_MAX;
+  public:
+	TreeNode* prev = nullptr;
+	int ans = INT_MAX;
 
-  void travel(TreeNode *node) {
+	void travel(TreeNode* node) {
 
-    if (node == nullptr) {
-      return;
-    }
+		if (node == nullptr) {
+			return;
+		}
 
-    travel(node->left);
+		travel(node->left);
 
-    if (prev != nullptr) {
-      ans = min(ans, abs(node->val - prev->val));
-    }
+		if (prev != nullptr) {
+			ans = min(ans, abs(node->val - prev->val));
+		}
 
-    prev = node;
+		prev = node;
 
-    travel(node->right);
-    return;
-  }
+		travel(node->right);
+		return;
+	}
 
-  int getMinimumDifference(TreeNode *root) {
-    travel(root);
-    return ans;
-  }
+	int getMinimumDifference(TreeNode* root) {
+		travel(root);
+		return ans;
+	}
 };

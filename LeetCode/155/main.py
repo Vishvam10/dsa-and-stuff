@@ -5,24 +5,24 @@ TAGS : stack, design
 
 
 class MinStack:
-    # STRUCTURE OF STACK ELEMENT : (val, minSoFar)
-    def __init__(self):
-        self.stack = []
+	# STRUCTURE OF STACK ELEMENT : (val, minSoFar)
+	def __init__(self):
+		self.stack = []
 
-    def push(self, val):
-        self.stack.append((val, min(self.getMin(), val)))
+	def push(self, val):
+		self.stack.append((val, min(self.getMin(), val)))
 
-    def pop(self):
-        self.stack.pop()
+	def pop(self):
+		self.stack.pop()
 
-    def top(self):
-        if self.stack:
-            return self.stack[-1][0]
+	def top(self):
+		if self.stack:
+			return self.stack[-1][0]
 
-    def getMin(self):
-        if self.stack:
-            return self.stack[-1][1]
-        return float("inf")
+	def getMin(self):
+		if self.stack:
+			return self.stack[-1][1]
+		return float("inf")
 
 
 # Your MinStack object will be instantiated and called as such:
