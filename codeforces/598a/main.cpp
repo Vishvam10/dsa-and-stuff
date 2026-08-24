@@ -1,6 +1,6 @@
-#include <bits/stdc++.h>
+
+#include <cassert>
 #include <iostream>
-#include <vector>
 
 using namespace std;
 
