@@ -1,9 +1,8 @@
-#include <iostream>  // for cin, cout
+#include <iostream> // for cin, cout
 
 using namespace std;
 
 using ull = unsigned long long int;
-
 
 // bool pal(ull x) {
 //     ull orig = x, rev = 0;
@@ -28,33 +27,37 @@ using ull = unsigned long long int;
 //     return;
 // }
 
-
 // Instead of brute force, just fix a to be a one digit palindrome instead.
 // a must be equal to (n % 12) ... for remainder 10 and 11, we can just use
 // these 2 digit palindromes : 22 (22 & 12 = 10) and 11 (11 % 12 == 11)
 
 void solve() {
-    ull n;
-    cin >> n;
+	ull n;
+	cin >> n;
 
-    ull r = n % 12;
-    ull a;
+	ull r = n % 12;
+	ull a;
 
-    if (r <= 9) a = r;
-    else if (r == 10) a = 22;
-    else a = 11;
+	if (r <= 9)
+		a = r;
+	else if (r == 10)
+		a = 22;
+	else
+		a = 11;
 
-    if (a > n) cout << -1 << '\n';
-    else cout << a << " " << n - a << '\n';
+	if (a > n)
+		cout << -1 << '\n';
+	else
+		cout << a << " " << n - a << '\n';
 }
 
 int main() {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    cout.tie(0);
-    int t;
-    cin >> t;
-    for(int i = 0; i < t; ++i) {
-        solve();
-    }
+	ios_base::sync_with_stdio(0);
+	cin.tie(0);
+	cout.tie(0);
+	int t;
+	cin >> t;
+	for (int i = 0; i < t; ++i) {
+		solve();
+	}
 }
