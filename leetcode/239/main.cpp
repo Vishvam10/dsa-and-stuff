@@ -1,8 +1,8 @@
 class Solution {
-public:
-    vector<int> maxSlidingWindow(vector<int>& arr, int k) {
-        int n = arr.size();
-        /*
+  public:
+	vector<int> maxSlidingWindow(vector<int>& arr, int k) {
+		int n = arr.size();
+		/*
             Assume k = 6
 
                0 1 2 3 4 5 6 7 8
@@ -21,28 +21,30 @@ public:
                     to 4) inclusive
         */
 
+		vector<int> left(n, 0), right(n, 0), ans;
 
-        vector<int> left(n, 0), right(n, 0), ans;
+		// Prefix maximum within each block
+		for (int i = 0; i < n; ++i) {
+			if (i % k == 0)
+				left[i] = arr[i];
+			else
+				left[i] = max(left[i - 1], arr[i]);
+		}
 
-        // Prefix maximum within each block
-        for (int i = 0; i < n; ++i) {
-            if (i % k == 0) left[i] = arr[i];
-            else left[i] = max(left[i - 1], arr[i]);
-        }
+		// Suffix maximum within each block
+		for (int i = n - 1; i >= 0; --i) {
+			if (i == n - 1 || (i + 1) % k == 0)
+				right[i] = arr[i];
+			else
+				right[i] = max(right[i + 1], arr[i]);
+		}
 
-        // Suffix maximum within each block
-        for (int i = n - 1; i >= 0; --i) {
-            if (i == n - 1 || (i + 1) % k == 0) right[i] = arr[i];
-            else right[i] = max(right[i + 1], arr[i]);
-        }
+		for (int i = 0; i <= n - k; ++i) {
+			ans.emplace_back(max(right[i], left[i + k - 1]));
+		}
 
-        for(int i = 0; i <= n - k; ++i) {
-            ans.emplace_back(max(right[i], left[i + k - 1]));
-        }
-
-        return ans;
-
-    }
+		return ans;
+	}
 };
 
 class Solution {
