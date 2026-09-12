@@ -1,47 +1,50 @@
 class MyQueue {
+private :
+    stack<int> st1, st2;
 
-  private:
-	stack<int> st;
-	stack<int> temp;
+    void move() {
+        if(st2.empty()) {
+            while(!st1.empty()) st2.push(st1.top()), st1.pop();
+        }
+    }
 
-  public:
-	MyQueue() {}
+public:
+    MyQueue() {
+        // [1, 2, 3, 4, 5]
 
-	// [1, 2, 3, 4, 5]
-	//  qh          sh
+        // push : [1] [ ]
+        // push : [1, 2] [ ]
+        // push : [1, 2, 3] [ ]
+        // pop  : [1, 2, 3, 4] [ ]
+        //      : [] [4, 3, 2, 1]
+        //      : [] [3, 2, 1]
+        // push : [5] [3, 2, 1]
+        // pop  : [5] [2, 1]
+        // pop  : [5] [1]
+        // pop  : [5] [ ]
+        // pop  : [ ] [5]
+        //      : [ ] [ ]
+    }
 
-	// [5, 4, 3, 2, 1]
-	//              qh
-	//              sh
+    void push(int x) {
+        st1.push(x);
+    }
 
-	void push(int x) {
+    int pop() {
+        move();
+        int ele = st2.top();
+        st2.pop();
+        return ele;
+    }
 
-		while (!st.empty()) {
-			temp.push(st.top());
-			st.pop();
-		}
+    int peek() {
+        move();
+        return st2.top();
+    }
 
-		st.push(x);
-
-		while (!temp.empty()) {
-			st.push(temp.top());
-			temp.pop();
-		}
-	}
-
-	int pop() {
-		int val = st.top();
-		st.pop();
-		return val;
-	}
-
-	int peek() {
-		return st.top();
-	}
-
-	bool empty() {
-		return st.empty();
-	}
+    bool empty() {
+        return st1.empty() && st2.empty();
+    }
 };
 
 /**
